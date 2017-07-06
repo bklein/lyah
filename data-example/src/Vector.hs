@@ -2,7 +2,7 @@ module Vector
 ( Vector(..)
 , plus
 , scale
---, cross
+, cross
 , dot
 ) where
 
@@ -14,8 +14,13 @@ plus :: (Num t) => Vector t -> Vector t -> Vector t
 scale :: (Num t) => Vector t -> t -> Vector t
 (Vector a b c) `scale` t = Vector (a * t) (b * t) (c * t)
 
---cross :: (Num t) => Vector t -> Vector t -> Vector t
---(Vector a b c) `cross` (Vector x y z) = Vector (a * x) (b * y) (c * z)
+cross :: (Num t) => Vector t -> Vector t -> Vector t
+(Vector a b c) `cross` (Vector x y z) =
+  Vector a' b' c'
+  where
+    a' = (b * z) - (y * c)
+    b' = (c * x) - (z * a)
+    c' = (a * y) - (x * b)
 
 dot :: (Num t) => Vector t -> Vector t -> t
 (Vector a b c) `dot` (Vector x y z) =

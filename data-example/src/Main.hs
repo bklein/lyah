@@ -16,3 +16,4 @@ main = do
   putStrLn $ "scale" ++ show (V.scale vec scale)
   putStrLn $ "plus: " ++ show (vec `V.plus` other_vec)
   putStrLn $ "dot: " ++ show (vec `V.dot` other_vec)
+  putStrLn $ "cross: " ++ show (vec `V.cross` other_vec)
